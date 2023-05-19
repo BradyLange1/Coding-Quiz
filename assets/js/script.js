@@ -27,18 +27,15 @@ function askQuestion(){
         ["Parenthesis", "Squigly Brackets", "Square Brackets", "Quotes"]
     ]
     console.log(answerBank[0][0])
+    answer1.textContent = "hello"
     for (var i = 0; i < questionBank.length; i++){
         question.textContent = questionBank[i]
         for (var i = 0; i < 4; i++){
-            console.log(answerBank[0][0])
             answer1.textContent = (answerBank[i][0])
             answer2.textContent = (answerBank[i][1])
             answer3.textContent = (answerBank[i][2])
             answer4.textContent = (answerBank[i][3])
         }
-        answers.addEventListener("click", function(){
-            
-        })
     }
 }
 

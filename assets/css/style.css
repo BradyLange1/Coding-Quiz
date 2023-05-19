@@ -28,7 +28,10 @@ header {
     margin: 20px;
 }
 
-.answer {
+#answer1,
+#answer2,
+#answer3,
+#answer4 {
     background-color: blueviolet;
     color: white;
     min-width: 100px;
