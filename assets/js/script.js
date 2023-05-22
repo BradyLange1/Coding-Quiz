@@ -8,16 +8,17 @@ var answer3 = document.querySelector("#answer3")
 var answer4 = document.querySelector("#answer4")
 
 answers.hidden = true
-//q&a bank
+var index = 0
+var correctAnswers = ["answer2", "answer3"]
+var timeLeft = 75
+var x = true
+
+//q&a banks
 var questionBank = ["What is not a data type in JavaScript?", "What type of character surrounds an array in JavaScript?"]
 var answerBank = [
     ["String", "Word", "Number", "Boolean"], 
     ["Parenthesis", "Squigly Brackets", "Square Brackets", "Quotes"]
 ]
-var index = 0
-var correctAnswers = ["answer2", "answer3"]
-var timeLeft = 75
-var x = true
 
 //timer function
 function decrementTimer(stopTime){
@@ -65,13 +66,18 @@ answers.addEventListener("click", function(event){
     if (index < 1){
         index++
         askQuestion(index)
-    } else {7
+    } else {
         if (timerEl.textContent < 0){
             timerEl.textContent = 0
         }
         question.textContent = "Your score: " + timerEl.textContent
         localStorage.setItem("score", timerEl.textContent)
         answers.remove()
+        var initials = document.createElement("p")
+        var initialsInput = document.createElement("input")
+        initials.textContent = "Enter your Initials: "
+        question.appendChild(initials)
+        initials.appendChild(initialsInput)
     }
 })
 
