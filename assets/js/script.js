@@ -12,6 +12,12 @@ var index = 0
 var correctAnswers = ["answer2", "answer3"]
 var timeLeft = 75
 var x = true
+var highscores = JSON.parse(localStorage.getItem("localHighscores"))
+var numOfHighscores = 5
+if (highscores === null){
+    highscores = []
+}
+console.log(highscores)
 
 //q&a banks
 var questionBank = ["What is not a data type in JavaScript?", "What type of character surrounds an array in JavaScript?"]
@@ -67,17 +73,37 @@ answers.addEventListener("click", function(event){
         index++
         askQuestion(index)
     } else {
+        var stop = true
+        decrementTimer(stop)
         if (timerEl.textContent < 0){
             timerEl.textContent = 0
         }
-        question.textContent = "Your score: " + timerEl.textContent
-        localStorage.setItem("score", timerEl.textContent)
+        recentScore = timerEl.textContent
+        question.textContent = "Your score: " + recentScore
         answers.remove()
         var initials = document.createElement("p")
         var initialsInput = document.createElement("input")
+        var submit = document.createElement("button")
+        var movePage = document.createElement("a")
+        movePage.href = "./highscores.html"
+        submit.textContent = "Submit"
         initials.textContent = "Enter your Initials: "
         question.appendChild(initials)
-        initials.appendChild(initialsInput)
+        question.appendChild(initialsInput)
+        question.appendChild(movePage)
+        movePage.appendChild(submit)
+        submit.addEventListener("click", function(event){
+            var userInitials = document.querySelector('input').value
+            var userScore = {
+                name: userInitials,
+                score: recentScore
+            }
+            highscores.push(userScore)
+            highscores.sort((a,b) => b.score - a.score)
+            highscores.splice(5)
+            console.log(highscores)
+            localStorage.setItem("localHighscores", JSON.stringify(highscores))
+
+        })
     }
 })
-

@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 40px;
+    text-align: center;
+    margin: 20px;
+    margin-bottom: 20px;
+}
+
+ul {
+    background-color: purple;
+    width: 25%;
+    align-self: center;
+    margin: 20px;
+}
+
+li {
+    color: white;
+    margin: 20px;
+    list-style: none;
+}
+
+section{
+    display: inline;
+    text-align: center;
+    margin: 20px;
+}
+
