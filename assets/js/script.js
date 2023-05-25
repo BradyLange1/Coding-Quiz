@@ -9,7 +9,7 @@ var answer4 = document.querySelector("#answer4")
 
 answers.hidden = true
 var index = 0
-var correctAnswers = ["answer2", "answer3"]
+var correctAnswers = ["answer2", "answer3", "answer1", "answer3", "answer2"]
 var timeLeft = 75
 var x = true
 var highscores = JSON.parse(localStorage.getItem("localHighscores"))
@@ -17,13 +17,15 @@ var numOfHighscores = 5
 if (highscores === null){
     highscores = []
 }
-console.log(highscores)
 
 //q&a banks
-var questionBank = ["What is not a data type in JavaScript?", "What type of character surrounds an array in JavaScript?"]
+var questionBank = ["What is not a data type in JavaScript?", "What type of character surrounds an array in JavaScript?", "What operator would you use for less than or equal to in JavaScript?", "What operator is a strict equality comparison in JavaScript?", "What operator is a loose equality comparison in JavaScript?"]
 var answerBank = [
     ["String", "Word", "Number", "Boolean"], 
-    ["Parenthesis", "Squigly Brackets", "Square Brackets", "Quotes"]
+    ["Parenthesis", "Squigly Brackets", "Square Brackets", "Quotes"],
+    ["<=", "<", ">=", ">"],
+    ["=", "==", "===", "===="],
+    ["<=", "==", "!=", ">"]
 ]
 
 //timer function
@@ -39,6 +41,8 @@ function decrementTimer(stopTime){
             }, 1000)
             x = false
         }
+    } else{
+        index += 5
     }
 }
 
@@ -63,18 +67,14 @@ startButton.addEventListener("click", function(){
 answers.addEventListener("click", function(event){
     var userAnswer = event.target.id
     if (userAnswer !== correctAnswers[index]){
-        console.log("wrong answer")
         timeLeft -= 10
         decrementTimer()
     } else {
-        console.log("correct answer")
     }
-    if (index < 1){
+    if (index < 4){
         index++
         askQuestion(index)
-    } else {
-        var stop = true
-        decrementTimer(stop)
+    } else{
         if (timerEl.textContent < 0){
             timerEl.textContent = 0
         }
@@ -101,7 +101,6 @@ answers.addEventListener("click", function(event){
             highscores.push(userScore)
             highscores.sort((a,b) => b.score - a.score)
             highscores.splice(5)
-            console.log(highscores)
             localStorage.setItem("localHighscores", JSON.stringify(highscores))
 
         })

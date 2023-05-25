@@ -8,7 +8,6 @@ clearHighscores.addEventListener("click", function(){
 })
 
 for (i = 0; i < highscores.length; i++){
-    console.log(highscores[i])
     var x = i.toString()
     var userName = (highscores[i].name)
     var userScore = (highscores[i].score)
