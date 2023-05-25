@@ -7,12 +7,13 @@ clearHighscores.addEventListener("click", function(){
     location.reload()
 })
 
-for (i = 0; i < highscores.length; i++){
-    var x = i.toString()
-    var userName = (highscores[i].name)
-    var userScore = (highscores[i].score)
-    var score = document.getElementById(x)
-    score.textContent = userName + ":   " + userScore
+if (highscores != null){
+    for (i = 0; i < highscores.length; i++){
+        var x = i.toString()
+        var userName = (highscores[i].name)
+        var userScore = (highscores[i].score)
+        var score = document.getElementById(x)
+        score.textContent = userName + ":   " + userScore
+    }
 }
-
 
