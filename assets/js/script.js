@@ -81,6 +81,8 @@ answers.addEventListener("click", function(event){
         recentScore = timerEl.textContent
         question.textContent = "Your score: " + recentScore
         answers.remove()
+        timeLeft = 0
+        decrementTimer()
         var initials = document.createElement("p")
         var initialsInput = document.createElement("input")
         var submit = document.createElement("button")
